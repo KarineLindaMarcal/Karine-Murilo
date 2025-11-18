@@ -1,82 +1,98 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casamento • Convite</title>
+    <title>Casamento — Karine & Amor</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Música -->
-    <audio id="music" autoplay loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9e83be671e.mp3?filename=romantic-ambient-11274.mp3" type="audio/mp3">
-    </audio>
+<header class="topo">
+    <h1 class="titulo-principal">Karine & Amor</h1>
+    <p class="subtitulo">22 de Novembro de 2026 — 08h30</p>
 
-    <!-- BRILHOS -->
-    <div class="glitter"></div>
-
-    <!-- HEADER -->
-    <header>
-        <h1>Karine & Seu Amor</h1>
-        <p>É com enorme alegria que convidamos você para celebrar nosso grande dia.</p>
-    </header>
-
-    <!-- CONTAGEM -->
-    <div class="countdown-box">
-        <h3 class="countdown-title">Contagem Regressiva</h3>
-        <div id="countdown">Carregando...</div>
+    <div class="contador">
+        <div><span id="dias"></span>dias</div>
+        <div><span id="horas"></span>h</div>
+        <div><span id="minutos"></span>min</div>
+        <div><span id="segundos"></span>s</div>
     </div>
+</header>
 
-    <!-- DETALHES -->
-    <section class="section">
-        <h2>Detalhes do Casamento</h2>
-        <p style="font-size: 19px;">
-            Data: <strong>22 de Novembro de 2026</strong><br>
-            Horário: <strong>08h30</strong>
-        </p>
-    </section>
+<nav class="menu">
+    <a href="#historia">Nossa História</a>
+    <a href="#timeline">Programação</a>
+    <a href="#musica">Playlist</a>
+    <a href="#rsvp">Confirmar Presença</a>
+</nav>
 
-    <!-- LOCAL -->
-    <section class="section">
-        <h2>Local</h2>
-        <p style="font-size: 19px;">
-            Rua Tuim 33, Arapongas, PR, 86709-380
-        </p>
-    </section>
+<section id="historia" class="sessao animar">
+    <h2>Nossa História</h2>
+    <p>
+        Tudo começou com um sorriso…  
+        E desde então, nossos caminhos se uniram para sempre.  
+        Em 2026, vamos celebrar o amor com aqueles que mais amamos: vocês.
+    </p>
+</section>
 
-    <!-- FORM -->
-    <section class="section">
-        <h2>Confirme Sua Presença</h2>
+<section id="timeline" class="sessao animar">
+    <h2>Programação do Grande Dia</h2>
 
-        <form id="rsvpForm">
-            <label for="nome">Nome Completo</label>
-            <input type="text" id="nome" required>
+    <div class="linha-tempo">
+        <div class="item">
+            <h3>08:30</h3>
+            <p>Cerimônia</p>
+        </div>
 
-            <label for="presenca">Você irá ao casamento?</label>
-            <select id="presenca">
-                <option value="Sim">Sim</option>
-                <option value="Não">Não</option>
-            </select>
+        <div class="item">
+            <h3>09:30</h3>
+            <p>Fotos</p>
+        </div>
 
-            <label for="acompanhantes">Acompanhantes</label>
-            <input type="number" id="acompanhantes" min="0" value="0">
+        <div class="item">
+            <h3>10:00</h3>
+            <p>Recepção</p>
+        </div>
+    </div>
+</section>
 
-            <button type="submit">Enviar Confirmação</button>
-        </form>
+<section id="musica" class="sessao animar">
+    <h2>Nossa Playlist</h2>
 
-        <p id="mensagem" class="msg"></p>
-    </section>
+    <div class="player">
+        <iframe 
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC" 
+            width="100%" height="380" frameBorder="0" allow="encrypted-media">
+        </iframe>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>Com carinho, Karine ❤️</p>
-    </footer>
+<section id="rsvp" class="sessao animar">
+    <h2>Confirme sua Presença</h2>
 
-    <script src="script.js"></script>
+    <form id="form-presenca">
+        <input type="text" id="nome" placeholder="Seu nome">
+        
+        <select id="confirmacao">
+            <option value="sim">Sim, eu vou! 💕</option>
+            <option value="nao">Infelizmente não poderei ir 😢</option>
+        </select>
+
+        <button type="submit">Enviar Confirmação</button>
+    </form>
+
+    <p id="mensagem-retorno"></p>
+
+    <a class="botao-maps" href="https://maps.google.com" target="_blank">
+        Como chegar ao local
+    </a>
+</section>
+
+<footer>
+    <p>Com carinho, Karine & Amor — 2026 💍</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
-
 </html>
-
