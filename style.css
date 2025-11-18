@@ -7,7 +7,7 @@ body {
 
 .hero {
     background: url('https://i.imgur.com/lIVwP1v.jpeg') center/cover no-repeat;
-    height: 60vh;
+    height: 70vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -32,6 +32,18 @@ body {
 .hero p {
     position: relative;
     font-size: 1.3rem;
+}
+
+.contador {
+    position: relative;
+    margin-top: 20px;
+    color: #f7e6c3;
+}
+
+#timer {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 section {
@@ -96,3 +108,4 @@ footer {
     text-align: center;
     margin-top: 40px;
 }
+
