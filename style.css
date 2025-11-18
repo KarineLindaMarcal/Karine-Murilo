@@ -14,8 +14,6 @@ body {
 /* ===== CORES PRINCIPAIS ===== */
 :root {
     --marsala: #8B2834;
-    --chumbo: #2F2F2F;
-    --branco: #ffffff;
 }
 
 /* ===== HEADER ===== */
@@ -60,7 +58,7 @@ header p {
 #countdown {
     font-size: 26px;
     font-weight: bold;
-    color: var(--chumbo);
+    color: var(--marsala);
 }
 
 /* ===== SEÇÃO PRINCIPAL ===== */
@@ -123,7 +121,7 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background: var(--chumbo);
+    background: var(--marsala);
     color: var(--branco);
     margin-top: 60px;
 }
