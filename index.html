@@ -10,19 +10,27 @@
 
 <body>
 
-    <!-- ===== HEADER ===== -->
+    <!-- Música -->
+    <audio id="music" autoplay loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9e83be671e.mp3?filename=romantic-ambient-11274.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- BRILHOS -->
+    <div class="glitter"></div>
+
+    <!-- HEADER -->
     <header>
-        <h1>Karine & Murilo</h1>
+        <h1>Karine & Seu Amor</h1>
         <p>É com enorme alegria que convidamos você para celebrar nosso grande dia.</p>
     </header>
 
-    <!-- ===== CONTAGEM ===== -->
+    <!-- CONTAGEM -->
     <div class="countdown-box">
         <h3 class="countdown-title">Contagem Regressiva</h3>
         <div id="countdown">Carregando...</div>
     </div>
 
-    <!-- ===== DETALHES ===== -->
+    <!-- DETALHES -->
     <section class="section">
         <h2>Detalhes do Casamento</h2>
         <p style="font-size: 19px;">
@@ -31,7 +39,7 @@
         </p>
     </section>
 
-    <!-- ===== LOCAL ===== -->
+    <!-- LOCAL -->
     <section class="section">
         <h2>Local</h2>
         <p style="font-size: 19px;">
@@ -39,7 +47,7 @@
         </p>
     </section>
 
-    <!-- ===== RSVP ===== -->
+    <!-- FORM -->
     <section class="section">
         <h2>Confirme Sua Presença</h2>
 
@@ -59,15 +67,16 @@
             <button type="submit">Enviar Confirmação</button>
         </form>
 
-        <p id="mensagem" style="margin-top: 25px; font-size: 20px; font-weight: 600;"></p>
+        <p id="mensagem" class="msg"></p>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer>
-        <p>Esperamos por você!</p>
+        <p>Com carinho, Karine ❤️</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 
 </html>
+
