@@ -1,37 +1,78 @@
-// ===== CONTAGEM =====
-function atualizarContagem() {
-    const dataCasamento = new Date("2026-11-22T08:30:00").getTime();
-    const agora = new Date().getTime();
-    const diferenca = dataCasamento - agora;
+// -----------------------------
+// Contagem regressiva
+// -----------------------------
+function iniciarContagem() {
+    const casamento = new Date("2026-11-22T08:30:00").getTime();
 
-    if (diferenca <= 0) {
-        document.getElementById("countdown").innerHTML = "É HOJE!!! 💍❤️";
-        return;
-    }
+    setInterval(() => {
+        const agora = Date.now();
+        const resto = casamento - agora;
 
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+        const d = Math.floor(resto / (1000 * 60 * 60 * 24));
+        const h = Math.floor((resto % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((resto % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((resto % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML =
-        `${dias} dias • ${horas} horas • ${minutos} min`;
+        document.getElementById("dias").textContent = d;
+        document.getElementById("horas").textContent = h;
+        document.getElementById("minutos").textContent = m;
+        document.getElementById("segundos").textContent = s;
+    }, 1000);
 }
 
-setInterval(atualizarContagem, 1000);
+iniciarContagem();
 
-// ===== FORMULARIO =====
-document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+// -----------------------------
+// Rolagem suave
+// -----------------------------
+document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+// -----------------------------
+// Animação ao aparecer
+// -----------------------------
+function animar() {
+    document.querySelectorAll(".animar").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+            el.classList.add("aparecer");
+        }
+    });
+}
+
+window.addEventListener("scroll", animar);
+window.addEventListener("load", animar);
+
+// -----------------------------
+// RSVP — WhatsApp
+// -----------------------------
+const form = document.getElementById("form-presenca");
+const retorno = document.getElementById("mensagem-retorno");
+
+form.addEventListener("submit", e => {
     e.preventDefault();
 
     const nome = document.getElementById("nome").value;
-    const presenca = document.getElementById("presenca").value;
-    const acompanhantes = document.getElementById("acompanhantes").value;
+    const presenca = document.getElementById("confirmacao").value;
 
-    const mensagem = document.getElementById("mensagem");
-
-    if (presenca === "Sim") {
-        mensagem.innerHTML = `Obrigado, ${nome}! ❤️<br>Presença confirmada com ${acompanhantes} acompanhante(s).`;
-    } else {
-        mensagem.innerHTML = `Tudo bem, ${nome}. 💕<br>Sentiremos sua falta!`;
+    if (nome.trim() === "") {
+        retorno.textContent = "Digite seu nome antes de enviar.";
+        retorno.style.color = "red";
+        return;
     }
+
+    retorno.textContent = "Confirmação enviada!";
+    retorno.style.color = "green";
+
+    const numero = "5599999999999"; // coloque o seu número
+
+    const mensagem = `Confirmação de presença:%0A%0ANome: ${nome}%0APresença: ${presenca}`;
+
+    window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+
+    form.reset();
 });
