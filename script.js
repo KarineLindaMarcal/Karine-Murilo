@@ -68,7 +68,7 @@ form.addEventListener("submit", e => {
     retorno.textContent = "Confirmação enviada!";
     retorno.style.color = "green";
 
-    const numero = "5599999999999"; // coloque o seu número
+    const numero = "5543996923926"; // coloque o seu número
 
     const mensagem = `Confirmação de presença:%0A%0ANome: ${nome}%0APresença: ${presenca}`;
 
