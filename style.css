@@ -1,12 +1,4 @@
-/* ===== PALETA MARSALA ===== */
-:root {
-    --marsala-escuro: #5A0C14;
-    --marsala: #7A0F1B;
-    --marsala-suave: #A33A45;
-    --marsala-claro: #C46A74;
-}
-
-/* RESET */
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -15,143 +7,125 @@
 }
 
 body {
-    background: var(--marsala-suave);
-    color: var(--marsala-escuro);
-    overflow-x: hidden;
+    background: #F8F8F8;
+    color: #333;
 }
 
-/* ===== GLITTER ===== */
-.glitter {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(var(--marsala-claro) 1px, transparent 1px);
-    background-size: 3px 3px;
-    opacity: 0.2;
-    animation: glitter 4s infinite alternate;
-}
-
-@keyframes glitter {
-    from { opacity: 0.15; }
-    to { opacity: 0.35; }
-}
-
-/* ===== FLORAL DECORATIVO ===== */
-header::before, footer::after {
-    content: "❁ ❁ ❁";
-    display: block;
-    font-size: 30px;
-    color: var(--marsala-claro);
-    margin-bottom: 10px;
-    text-align: center;
+/* ===== CORES PRINCIPAIS ===== */
+:root {
+    --marsala: #8B2834;
+    --chumbo: #2F2F2F;
+    --branco: #ffffff;
 }
 
 /* ===== HEADER ===== */
 header {
-    background: var(--marsala-escuro);
-    color: var(--marsala-claro);
+    background: var(--marsala);
+    color: var(--branco);
     text-align: center;
-    padding: 60px 20px;
-    border-bottom: 5px solid var(--marsala);
+    padding: 50px 20px;
 }
 
 header h1 {
-    font-size: 44px;
+    font-size: 42px;
     letter-spacing: 3px;
+    font-weight: 600;
 }
 
 header p {
-    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+    margin-top: 8px;
 }
 
-/* ===== CONTAGEM ===== */
+/* ===== CONTAGEM REGRESSIVA ===== */
 .countdown-box {
-    background: var(--marsala);
+    background: var(--branco);
+    padding: 25px;
     max-width: 450px;
     margin: 40px auto;
-    padding: 25px;
-    text-align: center;
-    color: var(--marsala-claro);
     border-radius: 12px;
-    border: 3px solid var(--marsala-escuro);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 6px solid var(--marsala);
+    text-align: center;
 }
 
-/* ===== SEÇÕES ===== */
+.countdown-title {
+    color: var(--marsala);
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+#countdown {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--chumbo);
+}
+
+/* ===== SEÇÃO PRINCIPAL ===== */
 .section {
-    padding: 50px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
 .section h2 {
-    font-size: 32px;
-    color: var(--marsala-escuro);
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: var(--marsala);
 }
 
-/* ===== FORM ===== */
+/* ===== FORMULÁRIO ===== */
 form {
-    background: var(--marsala);
-    padding: 25px;
+    background: var(--branco);
     max-width: 450px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 25px;
     border-radius: 12px;
-    border: 3px solid var(--marsala-escuro);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 6px solid var(--marsala);
 }
 
 label {
     display: block;
     margin-top: 15px;
-    color: var(--marsala-claro);
+    text-align: left;
     font-weight: 600;
 }
 
 input, select {
     width: 100%;
-    padding: 12px;
-    background: var(--marsala-suave);
-    border: 2px solid var(--marsala-escuro);
-    border-radius: 8px;
+    padding: 10px;
     margin-top: 5px;
-    color: var(--marsala-escuro);
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
 }
 
 button {
-    background: var(--marsala-escuro);
-    color: var(--marsala-claro);
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 8px;
     margin-top: 20px;
-    cursor: pointer;
+    width: 100%;
+    background: var(--marsala);
+    border: none;
+    padding: 12px;
+    color: var(--branco);
     font-size: 18px;
-    transition: 0.3s;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
-    background: var(--marsala);
+    background: #731F29;
 }
 
-.msg {
-    margin-top: 20px;
-    font-size: 20px;
-    color: var(--marsala-escuro);
-    font-weight: bold;
-}
-
-/* ===== FOOTER ===== */
+/* ===== RODAPÉ ===== */
 footer {
-    background: var(--marsala-escuro);
-    padding: 20px;
     text-align: center;
-    color: var(--marsala-claro);
+    padding: 20px;
+    background: var(--chumbo);
+    color: var(--branco);
     margin-top: 60px;
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 32px;
-    }
 }
 
 
