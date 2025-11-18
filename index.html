@@ -3,56 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casamento – Karine & Murilo</title>
+    <title>Casamento — Karine & Murilo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="hero">
-    <div class="overlay"></div>
+<header class="topo">
+    <h1 class="titulo-principal">Karine & Murilo</h1>
+    <p class="subtitulo">22 de Novembro de 2026 — 08h30</p>
 
-    <h1>Karine & Murilo</h1>
-    <p>Estamos felizes em convidar você para o nosso grande dia.</p>
-
-    <!-- CONTADOR -->
     <div class="contador">
-        <h3>Faltam</h3>
-
-        <div class="caixas">
-            <div class="box"><span id="dias">0</span><p>Dias</p></div>
-            <div class="box"><span id="horas">0</span><p>Horas</p></div>
-            <div class="box"><span id="minutos">0</span><p>Min</p></div>
-            <div class="box"><span id="segundos">0</span><p>Seg</p></div>
-        </div>
+        <div><span id="dias"></span>dias</div>
+        <div><span id="horas"></span>h</div>
+        <div><span id="minutos"></span>min</div>
+        <div><span id="segundos"></span>s</div>
     </div>
 </header>
 
-<section class="convite">
-    <h2>Convite</h2>
-    <p class="texto">
-        Com imensa alegria convidamos você para celebrar conosco um momento tão especial!
+<nav class="menu">
+    <a href="#historia">Nossa História</a>
+    <a href="#timeline">Programação</a>
+    <a href="#musica">Playlist</a>
+    <a href="#rsvp">Confirmar Presença</a>
+</nav>
 
-    <div class="card-convite">
-        <div class="topo">K & M</div>
-        <div class="conteudo">
-            <p>Karine e Murilo</p>
-            <span>22 de Novembro de 2026 • 08h30</span>
-            <span>Igreja Matriz – Centro</span>
+<section id="historia" class="sessao animar">
+    <h2>Nossa História</h2>
+    <p>
+        Tudo começou com um sorriso…  
+        E desde então, nossos caminhos se uniram para sempre.  
+        Em 2026, vamos celebrar o amor com aqueles que mais amamos: vocês.
+    </p>
+</section>
+
+<section id="timeline" class="sessao animar">
+    <h2>Programação do Grande Dia</h2>
+
+    <div class="linha-tempo">
+        <div class="item">
+            <h3>08:30</h3>
+            <p>Cerimônia</p>
+        </div>
+
+        <div class="item">
+            <h3>09:30</h3>
+            <p>Fotos</p>
+        </div>
+
+        <div class="item">
+            <h3>10:00</h3>
+            <p>Recepção</p>
         </div>
     </div>
 </section>
 
-<section class="rsvp">
+<section id="musica" class="sessao animar">
+    <h2>Nossa Playlist</h2>
+
+    <div class="player">
+        <iframe 
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC" 
+            width="100%" height="380" frameBorder="0" allow="encrypted-media">
+        </iframe>
+    </div>
+</section>
+
+<section id="rsvp" class="sessao animar">
     <h2>Confirme sua Presença</h2>
-    <form>
-        <input type="text" placeholder="Seu nome" required>
-        <input type="number" placeholder="Quantidade de convidados" min="1" required>
-        <button type="submit">Confirmar</button>
+
+    <form id="form-presenca">
+        <input type="text" id="nome" placeholder="Seu nome">
+        
+        <select id="confirmacao">
+            <option value="sim">Sim, eu vou! 💕</option>
+            <option value="nao">Infelizmente não poderei ir 😢</option>
+        </select>
+
+        <button type="submit">Enviar Confirmação</button>
     </form>
+
+    <p id="mensagem-retorno"></p>
+
+    <a class="botao-maps" href="https://maps.google.com" target="_blank">
+        Como chegar ao local
+    </a>
 </section>
 
 <footer>
-    Esperamos por você!
+    <p>Com carinho, Karine & Murilo — 2026 💍</p>
 </footer>
 
 <script src="script.js"></script>
