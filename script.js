@@ -1,26 +1,78 @@
-function atualizarContador() {
-    const dataCasamento = new Date("2026-11-22T08:30:00");
-    const agora = new Date();
-    const diff = dataCasamento - agora;
+// -----------------------------
+// Contagem regressiva
+// -----------------------------
+function iniciarContagem() {
+    const casamento = new Date("2026-11-22T08:30:00").getTime();
 
-    if (diff <= 0) {
-        document.getElementById("dias").innerHTML = "0";
-        document.getElementById("horas").innerHTML = "0";
-        document.getElementById("minutos").innerHTML = "0";
-        document.getElementById("segundos").innerHTML = "0";
+    setInterval(() => {
+        const agora = Date.now();
+        const resto = casamento - agora;
+
+        const d = Math.floor(resto / (1000 * 60 * 60 * 24));
+        const h = Math.floor((resto % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((resto % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((resto % (1000 * 60)) / 1000);
+
+        document.getElementById("dias").textContent = d;
+        document.getElementById("horas").textContent = h;
+        document.getElementById("minutos").textContent = m;
+        document.getElementById("segundos").textContent = s;
+    }, 1000);
+}
+
+iniciarContagem();
+
+// -----------------------------
+// Rolagem suave
+// -----------------------------
+document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+// -----------------------------
+// Animação ao aparecer
+// -----------------------------
+function animar() {
+    document.querySelectorAll(".animar").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+            el.classList.add("aparecer");
+        }
+    });
+}
+
+window.addEventListener("scroll", animar);
+window.addEventListener("load", animar);
+
+// -----------------------------
+// RSVP — WhatsApp
+// -----------------------------
+const form = document.getElementById("form-presenca");
+const retorno = document.getElementById("mensagem-retorno");
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const presenca = document.getElementById("confirmacao").value;
+
+    if (nome.trim() === "") {
+        retorno.textContent = "Digite seu nome antes de enviar.";
+        retorno.style.color = "red";
         return;
     }
 
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+    retorno.textContent = "Confirmação enviada!";
+    retorno.style.color = "green";
 
-    document.getElementById("dias").innerText = dias;
-    document.getElementById("horas").innerText = horas;
-    document.getElementById("minutos").innerText = minutos;
-    document.getElementById("segundos").innerText = segundos;
-}
+    const numero = "5599999999999"; // coloque o seu número
 
-setInterval(atualizarContador, 1000);
-atualizarContador();
+    const mensagem = `Confirmação de presença:%0A%0ANome: ${nome}%0APresença: ${presenca}`;
+
+    window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+
+    form.reset();
+});
