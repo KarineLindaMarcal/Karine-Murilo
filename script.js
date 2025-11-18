@@ -1,17 +1,17 @@
-// -----------------------------
-// Contagem regressiva
-// -----------------------------
+// ==============================
+//  CONTAGEM REGRESSIVA
+// ==============================
 function iniciarContagem() {
-    const casamento = new Date("2026-11-22T08:30:00").getTime();
+    const dataCasamento = new Date("2026-11-22T08:30:00").getTime();
 
     setInterval(() => {
-        const agora = Date.now();
-        const resto = casamento - agora;
+        const agora = new Date().getTime();
+        const dist = dataCasamento - agora;
 
-        const d = Math.floor(resto / (1000 * 60 * 60 * 24));
-        const h = Math.floor((resto % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((resto % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((resto % (1000 * 60)) / 1000);
+        const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+        const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((dist % (1000 * 60)) / 1000);
 
         document.getElementById("dias").textContent = d;
         document.getElementById("horas").textContent = h;
@@ -22,23 +22,26 @@ function iniciarContagem() {
 
 iniciarContagem();
 
-// -----------------------------
-// Rolagem suave
-// -----------------------------
+// ==============================
+//  ROLAGEM SUAVE DO MENU
+// ==============================
 document.querySelectorAll("a[href^='#']").forEach(link => {
     link.addEventListener("click", e => {
         e.preventDefault();
-        document.querySelector(link.getAttribute("href"))
-            .scrollIntoView({ behavior: "smooth" });
+        const alvo = document.querySelector(link.getAttribute("href"));
+        alvo.scrollIntoView({ behavior: "smooth" });
     });
 });
 
-// -----------------------------
-// Animação ao aparecer
-// -----------------------------
+// ==============================
+//  ANIMAÇÃO DE ENTRADA
+// ==============================
 function animar() {
-    document.querySelectorAll(".animar").forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+    const elementos = document.querySelectorAll(".animar");
+    const limite = window.innerHeight * 0.85;
+
+    elementos.forEach(el => {
+        if (el.getBoundingClientRect().top < limite) {
             el.classList.add("aparecer");
         }
     });
@@ -47,32 +50,36 @@ function animar() {
 window.addEventListener("scroll", animar);
 window.addEventListener("load", animar);
 
-// -----------------------------
-// RSVP — WhatsApp
-// -----------------------------
+// ==============================
+//  RSVP — ENVIO PARA WHATSAPP
+// ==============================
 const form = document.getElementById("form-presenca");
-const retorno = document.getElementById("mensagem-retorno");
+const msg = document.getElementById("mensagem-retorno");
 
 form.addEventListener("submit", e => {
     e.preventDefault();
 
     const nome = document.getElementById("nome").value;
-    const presenca = document.getElementById("confirmacao").value;
+    const confirmacao = document.getElementById("confirmacao").value;
 
     if (nome.trim() === "") {
-        retorno.textContent = "Digite seu nome antes de enviar.";
-        retorno.style.color = "red";
+        msg.textContent = "Por favor, informe seu nome.";
+        msg.style.color = "red";
         return;
     }
 
-    retorno.textContent = "Confirmação enviada!";
-    retorno.style.color = "green";
+    msg.textContent = "Obrigado! Sua presença foi registrada.";
+    msg.style.color = "green";
 
-    const numero = "5599999999999"; // coloque o seu número
+    // SEU WhatsApp aqui:
+    const numero = "5599999999999"; // coloque o seu!
 
-    const mensagem = `Confirmação de presença:%0A%0ANome: ${nome}%0APresença: ${presenca}`;
+    const texto =
+        `Confirmação de presença:\nNome: ${nome}\nVai ao casamento? ${confirmacao}`;
 
-    window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, "_blank");
 
     form.reset();
 });
